@@ -1,3 +1,5 @@
+//Brilliantly bad solution , damn when will I improve.
+
 class Node{
     public:
     int val;
