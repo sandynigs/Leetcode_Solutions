@@ -8,6 +8,12 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+class NodePair{
+    public:
+    ListNode* head;
+    ListNode* tail;
+
+};
 class Solution {
 public:
     void print(ListNode* head){
@@ -18,7 +24,8 @@ public:
         }
         cout<<endl;
     }
-    ListNode* reverse(ListNode* head){
+    NodePair reverse(ListNode* head){
+        ListNode* t=head;
         cout<<"reversing list:";
         print(head);
         ListNode* prev=NULL;
@@ -29,7 +36,10 @@ public:
             prev=curr;
             curr=nxt;
         }
-        return prev;
+        NodePair p;
+        p.head=prev;
+        p.tail=t;
+        return p;
     }
     
     ListNode* reverseBetween(ListNode* head, int left, int right) {
@@ -46,13 +56,16 @@ public:
             }
             ListNode* addLater=temp->next;
             temp->next=NULL;
-            head=reverse(head);
+            NodePair p =reverse(head);
+            head=p.head;
             // cout<<"reverse secttions is:";
             // print(head);
-            ListNode* aux=head;
-            while(aux->next!=NULL){
-                aux=aux->next;
-            }
+            ListNode* aux=p.tail;
+            // tail->next=addLater
+            // ListNode* aux=head;
+            // while(aux->next!=NULL){
+            //     aux=aux->next;
+            // }
             aux->next=addLater;
         }
         else{
@@ -68,14 +81,14 @@ public:
             }
             ListNode* addLater=temp2->next;
             temp2->next=NULL;
-            ListNode* rev=reverse(temp1->next);
+            NodePair p=reverse(temp1->next);
             // cout<<"reverse secttions is:";
             // print(rev);
-            temp1->next=rev;
-            ListNode* aux=rev;
-            while(aux->next!=NULL){
-                aux=aux->next;
-            }
+            temp1->next=p.head;
+            ListNode* aux=p.tail;
+            // while(aux->next!=NULL){
+            //     aux=aux->next;
+            // }
             aux->next=addLater;
         }
         return head;
