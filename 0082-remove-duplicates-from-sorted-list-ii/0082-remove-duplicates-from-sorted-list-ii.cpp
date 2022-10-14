@@ -1,3 +1,4 @@
+// ListNode sentinel = new ListNode(0, head); adding a sentinel node too is a popular approach
 /**
  * Definition for singly-linked list.
  * struct ListNode {
