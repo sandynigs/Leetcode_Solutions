@@ -1,4 +1,4 @@
-#include<unordered_map>
+/*#include<unordered_map>
 #include<vector>
 #include<climits>
 class Solution {
@@ -24,5 +24,23 @@ public:
         }
         return ans;
         
+    }
+};*/
+#include<set>
+class Solution {
+public:
+    char repeatedCharacter(string s) {
+        set<char> st;
+        char ans;
+        for(int i=0;i<s.size();i++){
+            if(st.count(s[i])){
+                ans=s[i];
+                break;
+            }
+            else{
+                st.insert(s[i]);
+            }
+        }
+        return ans;
     }
 };
